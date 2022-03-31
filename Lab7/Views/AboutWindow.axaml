@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="150"
+		Width="250" Height="150"
+        x:Class="Lab7.Views.AboutWindow"
+        Title="AboutWindow">
+
+	<Grid RowDefinitions="2*, *">
+			<TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+				Lab 7: Nikolaev Vladislav IP-016
+			</TextBlock>
+
+		<Button Grid.Row="1" Name="CloseBtn" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+			Close Window
+		</Button>
+	</Grid>
+	
+</Window>

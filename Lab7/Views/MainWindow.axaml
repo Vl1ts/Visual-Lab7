@@ -1,0 +1,198 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Lab7.ViewModels"
+		xmlns:model="clr-namespace:Lab7.Models"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Lab7.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Lab7">
+
+
+	<Grid RowDefinitions="*, 11*, *">
+		
+		<Menu Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+			<MenuItem Header="File">
+				<MenuItem Header="Save" Name="MenuSaveBtn"/>
+				<Separator/>
+				<MenuItem Header="Load" Name="MenuLoadBtn"/>
+				<Separator/>
+				<MenuItem Header="Exit" Name="MenuExitBtn"/>
+			</MenuItem>
+			<MenuItem Header="About" Name="MenuAboutBtn"/>
+		</Menu>
+
+		
+		
+		
+		
+		<Grid Grid.Row="1" RowDefinitions="18*, *">
+			
+			
+			
+			<DataGrid Name="MyDataGrid" Items="{Binding Items}" Grid.Row="0">
+			
+				<DataGrid.Columns>
+					
+					<DataGridTextColumn Width="250" Header="Student Data" Binding="{Binding StudentData}"/>
+					
+					<DataGridTemplateColumn Width="100" Header="VisProg" SortMemberPath="StudentMarks[0].MarkValue">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBlock Background="{Binding StudentMarks[0].CellBrushColor}" Text="{Binding StudentMarks[0].MarkValue}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+
+						<DataGridTemplateColumn.CellEditingTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBox Text="{Binding StudentMarks[0].MarkValue}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellEditingTemplate>
+					</DataGridTemplateColumn>
+
+					<DataGridTemplateColumn Width="100" Header="PhysCul" SortMemberPath="StudentMarks[1].MarkValue">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBlock Background="{Binding StudentMarks[1].CellBrushColor}" Text="{Binding StudentMarks[1].MarkValue}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+
+						<DataGridTemplateColumn.CellEditingTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBox Text="{Binding StudentMarks[1].MarkValue}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellEditingTemplate>
+					</DataGridTemplateColumn>
+
+					<DataGridTemplateColumn Width="100" Header="Networks" SortMemberPath="StudentMarks[2].MarkValue">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBlock Background="{Binding StudentMarks[2].CellBrushColor}" Text="{Binding StudentMarks[2].MarkValue}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+
+						<DataGridTemplateColumn.CellEditingTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBox Text="{Binding StudentMarks[2].MarkValue}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellEditingTemplate>
+					</DataGridTemplateColumn>
+
+					<DataGridTemplateColumn Width="100" Header="ProbTheory" SortMemberPath="StudentMarks[3].MarkValue">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBlock Background="{Binding StudentMarks[3].CellBrushColor}" Text="{Binding StudentMarks[3].MarkValue}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+
+						<DataGridTemplateColumn.CellEditingTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBox Text="{Binding StudentMarks[3].MarkValue}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellEditingTemplate>
+					</DataGridTemplateColumn>
+
+					<DataGridTemplateColumn Width="100" Header="CompMath" SortMemberPath="StudentMarks[4].MarkValue">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBlock Background="{Binding StudentMarks[4].CellBrushColor}" Text="{Binding StudentMarks[4].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+
+						<DataGridTemplateColumn.CellEditingTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBox Text="{Binding StudentMarks[4].MarkValue}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellEditingTemplate>
+					</DataGridTemplateColumn>
+
+					<DataGridTemplateColumn Header="Average" SortMemberPath="StudentAverageMark">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate DataType="model:Student">
+								<TextBlock Background="{Binding CellBrushColor}" Text="{Binding StudentAverageMark}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					
+					<DataGridCheckBoxColumn Header="y / n" Binding="{Binding IsStudentMarked}"/>
+					
+				</DataGrid.Columns>
+
+			</DataGrid>
+
+
+			<DockPanel Grid.Row="1">
+
+				<TextBlock Width="250">Summary: </TextBlock>
+
+				<DataGrid HeadersVisibility="None" Items="{Binding StudentsSummary}">
+					<DataGrid.Columns>
+						<DataGridTemplateColumn Width="100">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate DataType="model:Student" >
+									<TextBlock Background="{Binding StudentMarks[0].CellBrushColor}" Text="{Binding StudentMarks[0].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+
+						<DataGridTemplateColumn Width="100">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate DataType="model:Student" >
+									<TextBlock Background="{Binding StudentMarks[1].CellBrushColor}" Text="{Binding StudentMarks[1].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+
+						<DataGridTemplateColumn Width="100">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate DataType="model:Student" >
+									<TextBlock Background="{Binding StudentMarks[2].CellBrushColor}" Text="{Binding StudentMarks[2].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+
+						<DataGridTemplateColumn Width="100">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate DataType="model:Student" >
+									<TextBlock Background="{Binding StudentMarks[3].CellBrushColor}" Text="{Binding StudentMarks[3].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+
+						<DataGridTemplateColumn Width="100">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate DataType="model:Student" >
+									<TextBlock Background="{Binding StudentMarks[4].CellBrushColor}" Text="{Binding StudentMarks[4].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
+					
+					</DataGrid.Columns>
+				</DataGrid>
+				
+			</DockPanel>
+			
+			
+			
+			
+		</Grid>
+
+		
+		
+		
+		
+		
+		
+		<Grid Grid.Row="2" ColumnDefinitions="*, *">
+			<Button Grid.Column="0" Command="{Binding AddNewStudent}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+				Add new student
+			</Button>
+			<Button Grid.Column="1" Command="{Binding DeleteMarkedStudents}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+				Delete marked students
+			</Button>
+		</Grid>
+
+	</Grid>
+	
+</Window>
