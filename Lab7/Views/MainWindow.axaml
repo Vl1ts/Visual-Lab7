@@ -27,8 +27,8 @@
 		
 		
 		
-		<Grid Grid.Row="1" RowDefinitions="18*, *">
-			
+		<!--<Grid Grid.Row="1" RowDefinitions="18*, *">-->
+		<Grid Grid.Row="1" RowDefinitions="*, *">
 			
 			
 			<DataGrid Name="MyDataGrid" Items="{Binding Items}" Grid.Row="0">
@@ -131,7 +131,7 @@
 						<DataGridTemplateColumn Width="100">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate DataType="model:Student" >
-									<TextBlock Background="{Binding StudentMarks[0].CellBrushColor}" Text="{Binding StudentMarks[0].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+									<TextBlock Background="{Binding ListSummaryMarks[0].SumCellBrushColor}" Text="{Binding ListSummaryMarks[0].SummaryMarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
@@ -139,7 +139,7 @@
 						<DataGridTemplateColumn Width="100">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate DataType="model:Student" >
-									<TextBlock Background="{Binding StudentMarks[1].CellBrushColor}" Text="{Binding StudentMarks[1].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+									<TextBlock Background="{Binding ListSummaryMarks[1].SumCellBrushColor}" Text="{Binding ListSummaryMarks[1].SummaryMarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
@@ -147,7 +147,7 @@
 						<DataGridTemplateColumn Width="100">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate DataType="model:Student" >
-									<TextBlock Background="{Binding StudentMarks[2].CellBrushColor}" Text="{Binding StudentMarks[2].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+									<TextBlock Background="{Binding ListSummaryMarks[2].SumCellBrushColor}" Text="{Binding ListSummaryMarks[2].SummaryMarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
@@ -155,7 +155,7 @@
 						<DataGridTemplateColumn Width="100">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate DataType="model:Student" >
-									<TextBlock Background="{Binding StudentMarks[3].CellBrushColor}" Text="{Binding StudentMarks[3].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+									<TextBlock Background="{Binding ListSummaryMarks[3].SumCellBrushColor}" Text="{Binding ListSummaryMarks[3].SummaryMarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
@@ -163,7 +163,7 @@
 						<DataGridTemplateColumn Width="100">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate DataType="model:Student" >
-									<TextBlock Background="{Binding StudentMarks[4].CellBrushColor}" Text="{Binding StudentMarks[4].MarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+									<TextBlock Background="{Binding ListSummaryMarks[4].SumCellBrushColor}" Text="{Binding ListSummaryMarks[4].SummaryMarkValue}"	VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>

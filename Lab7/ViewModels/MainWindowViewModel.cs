@@ -14,12 +14,14 @@ namespace Lab7.ViewModels
         public MainWindowViewModel()
         {
             Items = new ObservableCollection<Student>();
-            StudentsSummary = new ObservableCollection<Student>();
-            StudentsSummary.Add(new Student());
-            StudentsSummary.Add(new Student());
-            StudentsSummary.Add(new Student());
-            StudentsSummary.Add(new Student());
-            StudentsSummary.Add(new Student());
+            //StudentsSummary = new ObservableCollection<SummaryMark>();
+            //StudentsSummary.Add(new SummaryMark());
+            //StudentsSummary.Add(new SummaryMark());
+            //StudentsSummary.Add(new SummaryMark());
+            //StudentsSummary.Add(new SummaryMark());
+            //StudentsSummary.Add(new SummaryMark());
+            StudentsSummary = new ObservableCollection<Summary>();
+            StudentsSummary.Add(new Summary());
         }
         ObservableCollection<Student> items;
         public ObservableCollection<Student> Items
@@ -57,8 +59,15 @@ namespace Lab7.ViewModels
             FindStudentsSummary();
         }
 
-        ObservableCollection<Student> studentsSummary;
-        public ObservableCollection<Student> StudentsSummary
+        //ObservableCollection<SummaryMark> studentsSummary;
+        //public ObservableCollection<SummaryMark> StudentsSummary
+        //{
+        //    get => studentsSummary;
+        //    set => this.RaiseAndSetIfChanged(ref studentsSummary, value);
+        //}
+
+        ObservableCollection<Summary> studentsSummary;
+        public ObservableCollection<Summary> StudentsSummary
         {
             get => studentsSummary;
             set => this.RaiseAndSetIfChanged(ref studentsSummary, value);
@@ -68,30 +77,72 @@ namespace Lab7.ViewModels
         {
             if(Items != null)
             {
+                //var summaryList = new List<double>();
+                //var summaryListIsNoError = new List<bool>();
+                //for (int i = 0; i < 5; ++i)
+                //{
+                //    summaryList.Add(0);
+                //    summaryListIsNoError.Add(true);
+                //}
+
+                //for (int i = 0; i < 5; ++i)
+                //{
+                //    foreach (Student currentStudent in Items)
+                //    {
+                //        if(currentStudent.StudentMarks[i].MarkValue == "#ERROR")
+                //        {
+                //            summaryListIsNoError[i] = false;
+                //            break;
+                //        }
+                //        else
+                //        {
+                //            summaryList[i] += int.Parse(currentStudent.StudentMarks[i].MarkValue);
+                //        }
+                //    }
+
+                //    if (summaryListIsNoError[i])
+                //    {
+                //        StudentsSummary[i].SummaryMarkValue = (summaryList[i] / Items.Count).ToString();
+                //    }
+                //    else
+                //    {
+                //        StudentsSummary[i].SummaryMarkValue = "#ERROR";
+                //    }
+                //}
+
                 var summaryList = new List<double>();
+                var summaryListIsNoError = new List<bool>();
                 for (int i = 0; i < 5; ++i)
                 {
                     summaryList.Add(0);
+                    summaryListIsNoError.Add(true);
                 }
 
-                foreach (Student currentStudent in Items)
+                for (int i = 0; i < 5; ++i)
                 {
-                    for (int i = 0; i < currentStudent.StudentMarks.Count; ++i)
+                    foreach (Student currentStudent in Items)
                     {
-                        try
+                        if (currentStudent.StudentMarks[i].MarkValue == "#ERROR")
+                        {
+                            summaryListIsNoError[i] = false;
+                            break;
+                        }
+                        else
                         {
                             summaryList[i] += int.Parse(currentStudent.StudentMarks[i].MarkValue);
                         }
-                        catch (Exception ex)
-                        {
-                            StudentsSummary[0].StudentMarks[i].MarkValue = "#ERROR";
-                        }
+                    }
+
+                    if (summaryListIsNoError[i])
+                    {
+                        StudentsSummary[0].ListSummaryMarks[i].SummaryMarkValue = (summaryList[i] / Items.Count).ToString("0.00");
+                    }
+                    else
+                    {
+                        StudentsSummary[0].ListSummaryMarks[i].SummaryMarkValue = "#ERROR";
                     }
                 }
-                for (int i = 0; i < 5; ++i)
-                {
-                    StudentsSummary[0].StudentMarks[i].MarkValue = (summaryList[i] / Items.Count).ToString();
-                }
+
             }
 
         }
